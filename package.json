@@ -1,0 +1,29 @@
+{
+  "name": "cesiumjs-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src",
+    "dev": "nodemon src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanjimenez97/cesiumjs-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivanjimenez97/cesiumjs-app/issues"
+  },
+  "homepage": "https://github.com/ivanjimenez97/cesiumjs-app#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
