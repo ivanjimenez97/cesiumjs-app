@@ -5,15 +5,15 @@ const path = require("path");
 //Settings
 app.set("port", 3000);
 app.set("views", path.join(__dirname, "views"));
+app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
 
 //middlewares
 
 //routes
-app.get("/", (req, res) => {
-  //res.sendFile(path.join(__dirname, "views/index.html"));
-  res.render("index", { title: "Cesium App" });
-});
+app.use(require("./routes/index"));
+
+//Listening the server
 app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.78/Build/Cesium/Cesium.js"></script>
+    <link
+      href="https://cesium.com/downloads/cesiumjs/releases/1.78/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Cesium App</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link disabled"
+                  href="#"
+                  tabindex="-1"
+                  aria-disabled="true"
+                  >Disabled</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--Cesium Container-->
+
+    <div id="cesiumContainer" class="w-auto h-auto"></div>
+    <script>
+      // Your access token can be found at: https://cesium.com/ion/tokens.
+      Cesium.Ion.defaultAccessToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjZjdjZDI4Mi0xMGQ5LTRiNjItYTBiMy02OTJhYmNlYzZkMjgiLCJpZCI6MzUzNzMsImlhdCI6MTYwMTkwNjU1Mn0.wFn9udhp_C6In8jbpRnMqpswmeLQWh5zbmySdm7jIfw";
+      // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+      const viewer = new Cesium.Viewer("cesiumContainer", {
+        terrainProvider: Cesium.createWorldTerrain(),
+      });
+      // Add Cesium OSM Buildings, a global 3D buildings layer.
+      const buildingTileset = viewer.scene.primitives.add(
+        Cesium.createOsmBuildings()
+      );
+      // Fly the camera to San Francisco at the given longitude, latitude, and height.
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
+        orientation: {
+          heading: Cesium.Math.toRadians(0.0),
+          pitch: Cesium.Math.toRadians(-15.0),
+        },
+      });
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
